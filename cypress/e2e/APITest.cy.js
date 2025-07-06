@@ -50,6 +50,7 @@ describe('Second API Test', ()=> {
         }).then((response)=> {
             expect(response.status).to.eq(200)
             expect(response.body.name).to.eq('Apple MacBook Pro 16')
+            expect(response.headers['content-type']).to.include('application/json');
             cy.log(JSON.stringify(response.body));
             id = response.body.id; // Store the ID for later use
             cy.log('Created Object ID: ' + id);
@@ -85,6 +86,7 @@ describe('Third API Test', ()=> {
             expect(response.status).to.eq(200)
             expect(response.body.name).to.eq('Apple MacBook Pro 16')
             cy.log(JSON.stringify(response.body));
+            cy.log('Object with ID ' + id + ' updated successfully');
         });
     });
 });
@@ -109,6 +111,7 @@ describe('Fourth API Test', ()=> {
         }).then((response)=> {
             expect(response.status).to.eq(200)
             cy.log(JSON.stringify(response.body));
+            cy.log('Object with ID ' + id + ' updated successfully');
         });
     });
 })
